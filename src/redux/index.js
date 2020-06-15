@@ -2,16 +2,17 @@
  * @Author: zhangcunxia
  * @Email: zcx4150@gmail.com
  * @Date: 2020-06-15 15:22:43
- * @LastEditTime: 2020-06-15 17:18:00
+ * @LastEditTime: 2020-06-15 18:46:10
  * @LastEditors: zhangcunxia
  * @Description: 
  */ 
 
-// import {createStore} from 'redux'
-import {createStore} from '../mini-redux/redux'
-import counter from '../reducer/counter'
+// import {createStore, applyMiddleware} from 'redux'
+import {createStore, applyMiddleware} from '../mini-redux/redux';
+import counter from '../reducer/counter';
+import thunk from 'redux-thunk';
 
-const store = createStore(counter);
+const store = createStore(counter, applyMiddleware(thunk)); 
 
 console.log('init', store.getState());
 

@@ -2,13 +2,14 @@
  * @Author: zhangcunxia
  * @Email: zcx4150@gmail.com
  * @Date: 2020-06-15 15:23:31
- * @LastEditTime: 2020-06-15 17:17:45
+ * @LastEditTime: 2020-06-15 18:43:06
  * @LastEditors: zhangcunxia
  * @Description: 
  */ 
 
 export const INCREASE = 'INCREASE'
 export const DECREASE = 'DECREASE'
+export const ASYNC_INCREASE = 'ASYNC_INCREASE'
 
 const initState = {num: 10}
 export default function counter(state = initState, action) {
@@ -17,6 +18,8 @@ export default function counter(state = initState, action) {
             return { num: state.num + 1 }
         case DECREASE:
             return { num: state.num - 1 }
+        case ASYNC_INCREASE:
+            return { num: state.num + 1 }
         default:
             return state.num || initState;
     }
@@ -28,4 +31,12 @@ export function increase() {
 
 export function decrease() {
     return { type: DECREASE };
+}
+
+export function asyncIncrease() {
+    return dispatch=> {
+        setTimeout(() => {
+            dispatch(increase())
+        }, 1000);
+    };
 }
