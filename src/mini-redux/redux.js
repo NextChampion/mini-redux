@@ -2,7 +2,7 @@
  * @Author: zhangcunxia
  * @Email: zcx4150@gmail.com
  * @Date: 2020-06-15 14:42:14
- * @LastEditTime: 2020-06-15 16:00:36
+ * @LastEditTime: 2020-06-15 17:18:52
  * @LastEditors: zhangcunxia
  * @Description: 最简单的redux
  */ 
@@ -18,7 +18,6 @@
      }
      function dispatch(action) {
         currentState = reducer(currentState, action);
-        console.log('currentState', currentState);
         currentListeners.forEach(v => v());
         return action;
      }
@@ -29,4 +28,17 @@
         subscribe,
         dispatch,
      }
+ }
+
+ function bindActionCtearer(creator, dispatch) {
+     return (...args) => dispatch(creator(...args));
+ }
+
+ export function bindActionCreaters(creaters,dispatch) {
+     const bound = {}
+     Object.keys(creaters).forEach(v => {
+        const creater = creaters[v];
+         bound[v] = bindActionCtearer(creater, dispatch)
+     })
+     return bound;
  }

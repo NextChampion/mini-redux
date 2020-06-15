@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import Counter from './components/Counter';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
+import { Provider } from './mini-redux/react-redux';
 import store from './redux';
 
 function App() {

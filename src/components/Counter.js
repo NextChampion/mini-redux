@@ -2,12 +2,13 @@
  * @Author: zhangcunxia
  * @Email: zcx4150@gmail.com
  * @Date: 2020-06-15 15:19:49
- * @LastEditTime: 2020-06-15 15:55:07
+ * @LastEditTime: 2020-06-15 16:55:52
  * @LastEditors: zhangcunxia
  * @Description: 
  */ 
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
+import { connect } from '../mini-redux/react-redux'
 import { increase, decrease } from '../reducer/counter';
 
 
