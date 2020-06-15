@@ -2,7 +2,7 @@
  * @Author: zhangcunxia
  * @Email: zcx4150@gmail.com
  * @Date: 2020-06-15 15:23:31
- * @LastEditTime: 2020-06-15 15:46:04
+ * @LastEditTime: 2020-06-15 16:03:25
  * @LastEditors: zhangcunxia
  * @Description: 
  */ 
@@ -11,12 +11,13 @@ export const INCREASE = 'INCREASE'
 export const DECREASE = 'DECREASE'
 
 const initState = {num: 10}
-export default function counter(state= initState, action) {
+export default function counter(state = initState, action) {
+    console.log('counter', state);
     switch (action.type) {
         case INCREASE:
-            return { num: ++state.num }
+            return { num: state.num + 1 }
         case DECREASE:
-            return { num: --state.num }
+            return { num: state.num - 1 }
         default:
             return state;
     }
