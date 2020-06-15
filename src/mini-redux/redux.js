@@ -2,7 +2,7 @@
  * @Author: zhangcunxia
  * @Email: zcx4150@gmail.com
  * @Date: 2020-06-15 14:42:14
- * @LastEditTime: 2020-06-15 17:18:52
+ * @LastEditTime: 2020-06-15 17:45:14
  * @LastEditors: zhangcunxia
  * @Description: 最简单的redux
  */ 
@@ -35,10 +35,14 @@
  }
 
  export function bindActionCreaters(creaters,dispatch) {
-     const bound = {}
-     Object.keys(creaters).forEach(v => {
-        const creater = creaters[v];
-         bound[v] = bindActionCtearer(creater, dispatch)
-     })
-     return bound;
+    //  const bound = {}
+    //  Object.keys(creaters).forEach(v => {
+    //     const creater = creaters[v];
+    //      bound[v] = bindActionCtearer(creater, dispatch)
+    //  })
+    //  return bound;
+    return Object.keys(creaters).reduce((ret, item)=> {
+        ret[item]=bindActionCtearer(creaters[item], dispatch)
+        return ret;
+    },{})
  }
